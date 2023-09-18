@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Classes
+{% endblock %}
+
+{% block main %}
+<div class="py-1 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1>Our Classes</h1>
+            <p class="lead text-body-secondary">
+                We cover beginner to advanced pole levels. Each course spans 8 weeks. Choose from pole trick techniques and choreography styles that suit your current skill level and personal interest.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="album py-5 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <div class="card w-100" style="width: 18rem;">
+                    <div style="width: 100%; height: 320px; overflow: hidden;">
+                        <img class="card-img-top" src="/static/tricks1.jpg" alt="Tricks Level 1" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Tricks Level 1</h5>
+                      <p class="card-text">An 8-week course that covers basic pole tricks. Suitable for beginners.</p>
+                    </div>
+
+                    <div class="card-body">
+                      <a href="/tricks-1" class="btn btn-primary">Select Timing</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col">
+                <div class="card w-100" style="width: 18rem;">
+                    <div style="width: 100%; height: 320px; overflow: hidden;">
+                        <img class="card-img-top" src="/static/tricks2.jpg" alt="Tricks Level 2" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Tricks Level 2</h5>
+                      <p class="card-text">An 8-week course that covers intermediate pole tricks. Suitable for those who have completed Tricks Level 1 and would like to progress to tricks that require inversion.</p>
+                    </div>
+
+                    <div class="card-body">
+                      <a href="/tricks-2" class="btn btn-primary">Select Timing</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col">
+                <div class="card w-100" style="width: 18rem;">
+                    <div style="width: 100%; height: 320px; overflow: hidden;">
+                        <img class="card-img-top" src="/static/contemporary3.jpg" alt="Contemporary Level 3" style="object-fit: cover; width: 100%; height: 100%;">
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Contemporary Level 3</h5>
+                      <p class="card-text">An 8-week choreography course combining advanced tricks with contemporary dance. Must be able to invert comfortably and completed Level 2 tricks or choreography classes.</p>
+                    </div>
+
+                    <div class="card-body">
+                      <a href="/contemporary-3" class="btn btn-primary">Select Timing</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+{% endblock %}
