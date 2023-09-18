@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Your bookings
+{% endblock %}
+
+{% block main %}
+
+<div class="header">
+    <h1>Your booked classes</h1>
+    <br>
+</div>
+
+<div class="section">
+    <table>
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Timing</th>
+                <th>Term</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in bookings %}
+            <tr>
+                <td>{{ row.class }}</td>
+                <td>{{ row.timing }}</td>
+                <td>{{ row.term }}</td>
+                <td>{{ row.year }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
