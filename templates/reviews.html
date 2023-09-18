@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Reviews
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <h3>Leave a Review</h3>
+    <form action="/reviews" id="reviewForm" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+      </div>
+      <div class="form-group">
+        <label for="review">Review:</label>
+        <textarea class="form-control" id="review" name="review" placeholder="Leave a review" rows="5" required></textarea>
+      </div>
+      <br>
+      <div class="form-group">
+        <label for="rating">Rating:</label>
+        <div class="rating">
+          <i class="fa fa-star" data-rating="1"></i>
+          <i class="fa fa-star" data-rating="2"></i>
+          <i class="fa fa-star" data-rating="3"></i>
+          <i class="fa fa-star" data-rating="4"></i>
+          <i class="fa fa-star" data-rating="5"></i>
+          <input type="hidden" name="rating" id="rating">
+        </div>
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <br>
+    <div id="reviewDisplay">
+      <h3>Community Reviews: {{ average }} &#x2B50;</h3>
+      <br>
+      <ul id="reviewList">
+        {% for review in reviews %}
+        <li style="text-align: left">
+            <strong style="color: #be7476">{{ review["name"] }}</strong>
+            <br>
+            <strong>Rating: </strong>
+            <div class="rating">
+                {% for i in range(review["rating"]) %}
+                  <i class="fa fa-star" data-rating="{{ i + 1 }}" id="rated"></i>
+                {% endfor %}
+            </div>
+            <br>
+            <br>
+            <p style="text-align: left">{{ review["review"] }}</p>
+        <hr>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("reviewForm").addEventListener("submit", function(event) {
+      var rating = parseInt(document.getElementById("rating").value);
+
+      if (isNaN(rating) || rating === 0) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Display an error message (replace with your desired behavior)
+        alert("Please select a star rating before submitting the review.");
+      } else {
+        // Display a success message (replace with your desired behavior)
+        alert("Review submitted successfully!");
+      }
+
+    });
+
+    var stars = document.querySelectorAll(".rating i");
+    var rating = 0; // Current rating
+    for (var i = 0; i < stars.length; i++) {
+      stars[i].addEventListener("mouseover", function() {
+        var currentRating = parseInt(this.getAttribute("data-rating"));
+        highlightStars(currentRating);
+      });
+
+      stars[i].addEventListener("mouseleave", function() {
+        resetStars();
+        highlightStars(rating);
+      });
+
+      stars[i].addEventListener("click", function() {
+        rating = parseInt(this.getAttribute("data-rating"));
+        document.getElementById("rating").value = rating;
+      });
+    }
+
+    function highlightStars(currentRating) {
+    for (var i = 0; i < stars.length; i++) {
+        if (i < currentRating) {
+            stars[i].classList.add("fa-star-highlight");
+        } else {
+            stars[i].classList.remove("fa-star-highlight");
+            }
+        }
+    }
+
+    function resetStars() {
+        for (var i = 0; i < stars.length; i++) {
+            stars[i].classList.remove("fa-star-highlight");
+        }
+    }
+
+  </script>
+
+{% endblock %}
