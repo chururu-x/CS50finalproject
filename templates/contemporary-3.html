@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Contemporary Level 3
+{% endblock %}
+
+{% block main %}
+<!-- Form input as a drop down sheet to select timing -->
+<form action="/cart" method="post">
+    <div class="mb-3">
+        <label for="dropdown">Select a timing</label>
+        <br>
+        <select class="dropdown" name="option">
+            {% for row in rows %}
+                {% if row.booking_count < 11 %}
+                    <option value="{{ row.id }}">{{ row.timing }}</option>
+                {% else %}
+                    <option value="{{ row.id }}" disabled>{{ row.timing }} (fully booked)</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </div>
+
+        <button class="btn btn-primary" type="submit">Add to cart</button>
+
+</form>
+
+{% endblock %}
