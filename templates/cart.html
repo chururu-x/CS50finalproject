@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Cart
+{% endblock %}
+
+{% block main %}
+<!-- Add list of classes to a table -->
+<div class="header">
+    <h1>Your cart</h1>
+    <p>
+        <a href="/classes">Continue shopping</a>
+    </p>
+    <br>
+</div>
+
+<div class="section">
+    <table>
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Timing</th>
+                <th>Price (SGD)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for row in items %}
+                <tr>
+                    <td>{{ row["class"] }}</td>
+                    <td>{{ row["timing"] }}</td>
+                    <td>{{ row["price"]|sgd }}</td>
+                    <td>
+                        <form action="/cart" method="post">
+                            <button class="btn btn-primary" name="remove" type="submit" value="{{ row['id'] }}">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td style="font-weight: bold; color: #be7476">Total</td>
+                <td style="font-weight: bold; color: #be7476">{{ total_price|sgd }}</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <br>
+    <form action="/success" method="post">
+        <button class="btn btn-primary" type="submit">Check out</button>
+    </form>
+</div>
+
+<!-- <div>
+    {{ print }}
+</div>
+-->
+
+{% endblock %}
