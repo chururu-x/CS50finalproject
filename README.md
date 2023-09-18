@@ -32,7 +32,7 @@ This is my final project for CS50 2023.
 1. `Main Directory`
     - `app.py` - Contains the main code for the website
     - `helpers.py` - Contains helper functions for the website which are imported into `app.py`
-    - `pole.db` - Contains the database storing relevant data sent and received from the website. This includes users' login credentials (with hashing for passwords), details of pole dance classes such as the class name and timeslots, class booking details, as well as student reviews.
+    - `pole.db` - Contains the database schema storing relevant data sent and received from the website. This includes users' login credentials (with hashing for passwords), details of pole dance classes such as the class name and timeslots, class booking details, as well as student reviews.
 
 2. `templates` folder - contains the html code for all the webpages
 
